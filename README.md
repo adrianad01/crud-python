@@ -9,3 +9,6 @@
 1. Flask-MySQL
 1. Jinja2
 
+## Base de Datos
+- Servidor: MySQL
+- Gestor: DBEAVER
