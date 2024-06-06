@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 import mysql.connector # type: ignore
+from datetime import datetime #?
+
 
 app = Flask(__name__)
 
@@ -13,16 +15,17 @@ db_config = {
 
 @app.route('/')
 def index():
+    
+    sql = "SELECT * FROM `registroDatos`;"
     connection = mysql.connector.connect(**db_config)
     cursor = connection.cursor()
-    sql = '''INSERT INTO registroDatos (nombre, apellidoPaterno, apellidoMaterno, edad, lugarNacimiento, email, foto) 
-             VALUES ("Jesús Adrián", "Alcocer", "Dóñez", 23, "Monterrey", "jadrianalcocer11@gmail.com", "foto.png");'''
     cursor.execute(sql)
-    connection.commit()
-    cursor.close()
-    connection.close()
 
-    return render_template('registroEmpleados/index.html')
+    registroDatos = cursor.fetchall()
+    print(registroDatos)
+
+    connection.commit()
+    return render_template('registroEmpleados/index.html', registroDatos=registroDatos)
 
 
 @app.route('/create')
@@ -40,12 +43,18 @@ def storage():
     _email=request.form['txtEmail']
     _foto=request.files['txtFoto']
 
+    now = datetime.now()
+    tiempo = now.strftime("%Y%H%M%S")
+
+    if _foto.filename!='':
+        nuevoNombreFoto=tiempo+_foto.filename
+        _foto.save("uploads/" +nuevoNombreFoto)
 
     connection = mysql.connector.connect(**db_config)
     cursor = connection.cursor()
     sql = '''INSERT INTO registroDatos (nombre, apellidoPaterno, apellidoMaterno, edad, lugarNacimiento, email, foto) 
              VALUES (%s, %s, %s, %s, %s, %s, %s);'''
-    datos = (_nombre, _apellidoPaterno, _apellidoMaterno, _edad, _lugarNacimiento, _email, _foto.filename)
+    datos = (_nombre, _apellidoPaterno, _apellidoMaterno, _edad, _lugarNacimiento, _email, nuevoNombreFoto)
     cursor.execute(sql,datos)
     connection.commit()
     cursor.close()
