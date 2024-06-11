@@ -7,6 +7,10 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
     <title>CRUD</title>
   </head>
   <body>
@@ -35,7 +39,17 @@
           <td>{{registroDatos[5]}}</td>
           <td>{{registroDatos[6]}}</td>
           <td>{{registroDatos[7]}}</td>
-          <td>Editar - Eliminar</td>
+          <td>
+            <a href="/edit/{{registroDatos[0]}}"
+              ><span class="material-symbols-outlined">
+                edit
+                </span></a
+            >
+            
+            <a href="/destroy/{{registroDatos[0]}}"
+              ><span class="material-symbols-outlined"> delete </span></a
+            >
+          </td>
         </tr>
         {% endfor %}
       </tbody>

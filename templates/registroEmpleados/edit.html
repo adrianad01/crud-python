@@ -1,0 +1,49 @@
+Formulario para editar {% for registroDatos in registroDatos %}
+
+<form action="/update" method="post" enctype="multipart/form-data">
+  <h2>ID</h2>
+  <input type="text" value=" {{registroDatos[0]}}" name="txtID" id="txtID" />
+  <h2>Nombre(s):</h2>
+  <input
+    type="text"
+    value="{{registroDatos[1]}}"
+    name="txtNombre"
+    id="txtNombre"
+  />
+  <h2>Apellido Paterno:</h2>
+  <input
+    type="text"
+    value="{{registroDatos[2]}}"
+    name="txtApellidoPaterno"
+    id="txtApellidoPaterno"
+  />
+  <h2>Apellido Materno:</h2>
+  <input
+    type="text"
+    value="{{registroDatos[3]}}"
+    name="txtApellidoMaterno"
+    id="txtApellidoMaterno"
+  />
+  <h2>Edad:</h2>
+  <input type="text" value="{{registroDatos[4]}}" name="txtEdad" id="txtEdad" />
+  <h2>Lugar de Nacimiento:</h2>
+  <input
+    type="text"
+    value="{{registroDatos[5]}}"
+    name="txtLugarNacimiento"
+    id="txtLugarNacimiento"
+  />
+  <h2>Correo Electrónico:</h2>
+  <input
+    type="text"
+    value=" {{registroDatos[6]}}"
+    name="txtEmail"
+    id="txtEmail"
+  />
+  <h2>Fotografía:</h2>
+  {{registroDatos[7]}}
+  <input type="file" value="{{registroDatos[6]}}" name="txtFoto" id="txtFoto" />
+  <br /><br />
+  <input type="submit" value="Guardar" />
+</form>
+{% endfor %}

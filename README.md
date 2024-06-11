@@ -19,3 +19,4 @@
     - Para la vista del formulario es: localhost:puerto/create
 - Miercoles 5 de Junio: Creación de la interfaz que arrojará la información por medio de la consulta con el método GET
     - Para la vista de la visualización de la información registrada es: localhost:puerto
+- Lunes 10 de Junio: Se le agregó la funcionalidad a los botones de edit y delete
