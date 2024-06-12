@@ -1,3 +1,4 @@
+{% include 'header.html' %}
 Formulario para editar {% for registroDatos in registroDatos %}
 
 <form action="/update" method="post" enctype="multipart/form-data">
@@ -40,10 +41,8 @@ Formulario para editar {% for registroDatos in registroDatos %}
     name="txtEmail"
     id="txtEmail"
   />
-  <h2>Fotografía:</h2>
-  {{registroDatos[7]}}
-  <input type="file" value="{{registroDatos[6]}}" name="txtFoto" id="txtFoto" />
   <br /><br />
   <input type="submit" value="Guardar" />
 </form>
 {% endfor %}
+{% include 'footer.html' %}

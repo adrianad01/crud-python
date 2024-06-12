@@ -50,27 +50,14 @@ def update():
     _edad = request.form['txtEdad']
     _lugarNacimiento = request.form['txtLugarNacimiento']
     _email = request.form['txtEmail']
-    _foto = request.files['txtFoto']
     id = request.form['txtID']
 
     connection = mysql.connector.connect(**db_config)
     cursor = connection.cursor()
-
-    if _foto.filename != '':
-        now = datetime.now()
-        tiempo = now.strftime("%Y%H%M%S")
-        nuevoNombreFoto = tiempo + _foto.filename
-        _foto.save("uploads/" + nuevoNombreFoto)
-
-        sql = '''UPDATE registroDatos SET 
-                 nombre=%s, apellidoPaterno=%s, apellidoMaterno=%s, edad=%s, 
-                 lugarNacimiento=%s, email=%s, foto=%s WHERE id=%s;'''
-        datos = (_nombre, _apellidoPaterno, _apellidoMaterno, _edad, _lugarNacimiento, _email, nuevoNombreFoto, id)
-    else:
-        sql = '''UPDATE registroDatos SET 
-                 nombre=%s, apellidoPaterno=%s, apellidoMaterno=%s, edad=%s, 
-                 lugarNacimiento=%s, email=%s WHERE id=%s;'''
-        datos = (_nombre, _apellidoPaterno, _apellidoMaterno, _edad, _lugarNacimiento, _email, id)
+    sql = '''UPDATE registroDatos SET 
+             nombre=%s, apellidoPaterno=%s, apellidoMaterno=%s, edad=%s, 
+             lugarNacimiento=%s, email=%s WHERE id=%s;'''
+    datos = (_nombre, _apellidoPaterno, _apellidoMaterno, _edad, _lugarNacimiento, _email, id)
 
     cursor.execute(sql, datos)
     connection.commit()
@@ -90,23 +77,13 @@ def storage():
     _edad = request.form['txtEdad']
     _lugarNacimiento = request.form['txtLugarNacimiento']
     _email = request.form['txtEmail']
-    _foto = request.files['txtFoto']
-
-    now = datetime.now()
-    tiempo = now.strftime("%Y%H%M%S")
-
-    if _foto.filename != '':
-        nuevoNombreFoto = tiempo + _foto.filename
-        _foto.save("uploads/" + nuevoNombreFoto)
-    else:
-        nuevoNombreFoto = None  # Manejo del caso donde no se suba una foto
 
     connection = mysql.connector.connect(**db_config)
     cursor = connection.cursor()
     sql = '''INSERT INTO registroDatos 
-             (nombre, apellidoPaterno, apellidoMaterno, edad, lugarNacimiento, email, foto) 
-             VALUES (%s, %s, %s, %s, %s, %s, %s);'''
-    datos = (_nombre, _apellidoPaterno, _apellidoMaterno, _edad, _lugarNacimiento, _email, nuevoNombreFoto)
+             (nombre, apellidoPaterno, apellidoMaterno, edad, lugarNacimiento, email) 
+             VALUES (%s, %s, %s, %s, %s, %s);'''
+    datos = (_nombre, _apellidoPaterno, _apellidoMaterno, _edad, _lugarNacimiento, _email)
     cursor.execute(sql, datos)
     connection.commit()
     cursor.close()

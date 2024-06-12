@@ -1,58 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-    />
-    <title>CRUD</title>
-  </head>
-  <body>
-    <table class="table table-light">
-      <thead class="thead-light">
-        <tr>
-          <th>#</th>
-          <th>Nombre</th>
-          <th>Apellido Paterno</th>
-          <th>Apellido Materno</th>
-          <th>Edad</th>
-          <th>Lugar de Nacimiento</th>
-          <th>Email</th>
-          <th>Foto</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for registroDatos in registroDatos %}
-        <tr>
-          <td>{{registroDatos[0]}}</td>
-          <td>{{registroDatos[1]}}</td>
-          <td>{{registroDatos[2]}}</td>
-          <td>{{registroDatos[3]}}</td>
-          <td>{{registroDatos[4]}}</td>
-          <td>{{registroDatos[5]}}</td>
-          <td>{{registroDatos[6]}}</td>
-          <td>{{registroDatos[7]}}</td>
-          <td>
-            <a href="/edit/{{registroDatos[0]}}"
-              ><span class="material-symbols-outlined">
-                edit
-                </span></a
-            >
-            
-            <a href="/destroy/{{registroDatos[0]}}"
-              ><span class="material-symbols-outlined"> delete </span></a
-            >
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </body>
-</html>
+{% include 'header.html' %}
+<table class="table table-light">
+  <thead class="thead-light">
+    <tr>
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Apellido Paterno</th>
+      <th>Apellido Materno</th>
+      <th>Edad</th>
+      <th>Lugar de Nacimiento</th>
+      <th>Email</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for registroDatos in registroDatos %}
+    <tr>
+      <td>{{registroDatos[0]}}</td>
+      <td>{{registroDatos[1]}}</td>
+      <td>{{registroDatos[2]}}</td>
+      <td>{{registroDatos[3]}}</td>
+      <td>{{registroDatos[4]}}</td>
+      <td>{{registroDatos[5]}}</td>
+      <td>{{registroDatos[6]}}</td>
+      <td>
+        <a href="/edit/{{registroDatos[0]}}"><span class="material-symbols-outlined">
+            edit
+          </span></a>
+
+        <a href="/destroy/{{registroDatos[0]}}"><span class="material-symbols-outlined"> delete </span></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% include 'footer.html' %}
