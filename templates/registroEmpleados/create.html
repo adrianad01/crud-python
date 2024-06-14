@@ -1,18 +1,43 @@
 {% include 'header.html' %}
 <form action="/data" method="post" enctype="multipart/form-data">
-    <h2>Nombre(s):</h2>
-    <input type="text" name="txtNombre" id="txtNombre">
-    <h2>Apellido Paterno:</h2>
-    <input type="text" name="txtApellidoPaterno" id="txtApellidoPaterno">
-    <h2>Apellido Materno:</h2>
-    <input type="text" name="txtApellidoMaterno" id="txtApellidoMaterno">
-    <h2>Edad:</h2>
-    <input type="text" name="txtEdad" id="txtEdad">
-    <h2>Lugar de Nacimiento:</h2>
-    <input type="text" name="txtLugarNacimiento" id="txtLugarNacimiento">
-    <h2>Correo Electrónico:</h2>
-    <input type="text" name="txtEmail" id="txtEmail">
     <br><br>
-    <input type="submit" value="Guardar">
+    <div class="card">
+        <div class="card-header">
+            Crear nuevo registro
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="txtNombre">Nombre(s):</label>
+                <input id="txtNombre" class="form-control" type="text" name="txtNombre">
+            </div>
+            <div class="form-group">
+                <label for="txtApellidoPaterno">Apellido Paterno:</label>
+                <input id="txtApellidoPaterno" class="form-control" type="text" name="txtApellidoPaterno">
+            </div>
+            <div class="form-group">
+                <label for="txtApellidoMaterno">Apellido Materno:</label>
+                <input id="txtApellidoMaterno" class="form-control" type="text" name="txtApellidoMaterno">
+            </div>
+            <div class="form-group">
+                <label for="txtEdad">Edad:</label>
+                <input id="txtEdad" class="form-control" type="text" name="txtEdad">
+            </div>
+            <div class="form-group">
+                <label for="txtLugarNacimiento">Lugar de Nacimiento:</label>
+                <input id="txtLugarNacimiento" class="form-control" type="text" name="txtLugarNacimiento">
+            </div>
+            <div class="form-group">
+                <label for="txtEmail">Correo Electrónico:</label>
+                <input id="txtEmail" class="form-control" type="text" name="txtEmail">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Guardar">
+                <a href="{{url_for('index')}}" class="btn btn-primary">Regresar</a>
+            </div>
+
+
+        </div>
+    </div>
+    
 </form>
 {% include 'footer.html' %}

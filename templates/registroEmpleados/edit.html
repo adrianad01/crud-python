@@ -1,48 +1,46 @@
 {% include 'header.html' %}
-Formulario para editar {% for registroDatos in registroDatos %}
-
+{% for registro in registroDatos %}
 <form action="/update" method="post" enctype="multipart/form-data">
-  <h2>ID</h2>
-  <input type="text" value=" {{registroDatos[0]}}" name="txtID" id="txtID" />
-  <h2>Nombre(s):</h2>
-  <input
-    type="text"
-    value="{{registroDatos[1]}}"
-    name="txtNombre"
-    id="txtNombre"
-  />
-  <h2>Apellido Paterno:</h2>
-  <input
-    type="text"
-    value="{{registroDatos[2]}}"
-    name="txtApellidoPaterno"
-    id="txtApellidoPaterno"
-  />
-  <h2>Apellido Materno:</h2>
-  <input
-    type="text"
-    value="{{registroDatos[3]}}"
-    name="txtApellidoMaterno"
-    id="txtApellidoMaterno"
-  />
-  <h2>Edad:</h2>
-  <input type="text" value="{{registroDatos[4]}}" name="txtEdad" id="txtEdad" />
-  <h2>Lugar de Nacimiento:</h2>
-  <input
-    type="text"
-    value="{{registroDatos[5]}}"
-    name="txtLugarNacimiento"
-    id="txtLugarNacimiento"
-  />
-  <h2>Correo Electrónico:</h2>
-  <input
-    type="text"
-    value=" {{registroDatos[6]}}"
-    name="txtEmail"
-    id="txtEmail"
-  />
-  <br /><br />
-  <input type="submit" value="Guardar" />
+    <br><br>
+    <div class="card">
+        <div class="card-header">
+            Editar registro
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="txtID">ID:</label>
+                <input id="txtID" value="{{ registro[0] }}" class="form-control" type="text" name="txtID" readonly>
+            </div>
+            <div class="form-group">
+                <label for="txtNombre">Nombre(s):</label>
+                <input id="txtNombre" value="{{ registro[1] }}" class="form-control" type="text" name="txtNombre">
+            </div>
+            <div class="form-group">
+                <label for="txtApellidoPaterno">Apellido Paterno:</label>
+                <input id="txtApellidoPaterno" value="{{ registro[2] }}" class="form-control" type="text" name="txtApellidoPaterno">
+            </div>
+            <div class="form-group">
+                <label for="txtApellidoMaterno">Apellido Materno:</label>
+                <input id="txtApellidoMaterno" value="{{ registro[3] }}" class="form-control" type="text" name="txtApellidoMaterno">
+            </div>
+            <div class="form-group">
+                <label for="txtEdad">Edad:</label>
+                <input id="txtEdad" value="{{ registro[4] }}" class="form-control" type="text" name="txtEdad">
+            </div>
+            <div class="form-group">
+                <label for="txtLugarNacimiento">Lugar de Nacimiento:</label>
+                <input id="txtLugarNacimiento" value="{{ registro[5] }}" class="form-control" type="text" name="txtLugarNacimiento">
+            </div>
+            <div class="form-group">
+                <label for="txtEmail">Correo Electrónico:</label>
+                <input id="txtEmail" value="{{ registro[6] }}" class="form-control" type="text" name="txtEmail">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Actualizar">
+                <a href="{{ url_for('index') }}" class="btn btn-primary">Regresar</a>
+            </div>
+        </div>
+    </div>
 </form>
 {% endfor %}
 {% include 'footer.html' %}

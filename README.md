@@ -21,3 +21,4 @@
     - Para la vista de la visualización de la información registrada es: localhost:puerto
 - Lunes 10 de Junio: Se le agregó la funcionalidad a los botones de edit y delete
 - Martes 11 de Junio: Se eliminó el campo foto y todo lo relacionado con la foto en el código Python y HTML
+- Jueves 13 de Junio: Diseño de las vistas
